@@ -1,6 +1,6 @@
 import pandas as pd
 
-class FaturaAnalyzer:
+class FaturaAnalizi:
     GEREKLI_SUTUNLAR = ["Fatura No", "Tutar", "Tarih", "Fabrika Adı"]
 
     def __init__(self, dosya_yolu):
@@ -9,9 +9,9 @@ class FaturaAnalyzer:
 
     def yukle(self):
         self.df = pd.read_excel(self.dosya_yolu)
-        self._sutun_kontrol()
+        self.sutun_kontrol()
 
-    def _sutun_kontrol(self):
+    def sutun_kontrol(self):
         eksikler = [s for s in self.GEREKLI_SUTUNLAR if s not in self.df.columns]
         if eksikler:
             raise ValueError(f"Eksik sütunlar: {', '.join(eksikler)}")
